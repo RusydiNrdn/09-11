@@ -1,0 +1,26 @@
+---
+title: "simple linear regression"
+author: 'Fariz Rifqi (19523125) & Rusydi Nurdin (19523146)'
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+library(rgl)
+library(predict3d)
+```
+```{r} 
+hargarumah <- read.csv("../dataset/rumah.csv")
+head(hargarumah)
+```
+
+```{r}
+fit <- lm(HARGA~LB, data = hargarumah)
+fit
+```
+```{r}
+ggPredict(fit)
+```
+```{r}
+ggPredict(fit, xpos = 0.75, vjust = 1.5, show.error = T)
+```

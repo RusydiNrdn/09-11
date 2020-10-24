@@ -1,0 +1,43 @@
+---
+title: "Naive Bayes"
+output: html_document
+---
+
+```{r}
+library(e1071)
+```
+
+```{r}
+senjata <- read.csv("../dataset/weapon-valorant.csv", header=T, stringsAsFactors=T)
+senjata
+```
+
+```{r}
+str(senjata)
+```
+
+```{r}
+Naive_Bayes_Model=naiveBayes(Weapon.Type ~., data=senjata)
+Naive_Bayes_Model
+```
+
+```{r}
+newData <- data.frame(Name = "AUG", Price = 2900, Fire.Rate = 9.75, Magazine.Capacity = 35, Wall.Penetration = "Medium", HDMG_0=155, BDMG_0=154, LDMG_0=33, HDMG_1=155, BDMG_1=154, LDMG_1=33, HDMG_2=155, BDMG_2=154, LDMG_2=33)
+newData
+```
+
+```{r}
+vector_prediction = predict(Naive_Bayes_Model, newData, type = "raw")
+vp = vector_prediction
+vp
+```
+
+```{r}
+yhat_type = colnames(vp)[max.col(vp,ties.method="first")]
+sprintf("y_hat for the new data is '%s'",yhat_type)
+```
+
+```{r}
+newData$Weapon.Type <- yhat_type
+newData
+```

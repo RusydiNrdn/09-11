@@ -1,0 +1,29 @@
+---
+title: "logistic-regression"
+author: 'Fariz Rifqi (19523125) & Rusydi Nurdin (19523146)'
+date: "10/24/2020"
+output: html_document
+---
+
+```{r}
+library(ISLR)
+```
+```{r}
+hargarumah <- read.csv("../dataset/rumah.csv", header=T, stringsAsFactors=T)
+head(hargarumah)
+```
+
+```{r}
+model <- glm(HARGA~LB, data = hargarumah)
+summary(model)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(hargarumah, aes(x=LB, y=HARGA)) + geom_point() +
+  stat_smooth(method="glm", method.args = list(), se = FALSE)
+```
+

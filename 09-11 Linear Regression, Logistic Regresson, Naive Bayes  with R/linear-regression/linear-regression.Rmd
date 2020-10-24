@@ -1,0 +1,33 @@
+---
+title: "linear-regression"
+author: 'Fariz Rifqi (19523125) & Rusydi Nurdin (19523146)'
+date: "10/24/2020"
+output: html_document
+---
+
+```{r} 
+library(ISLR)
+```
+
+```{r} 
+hargarumah <- read.csv("../dataset/rumah.csv")
+head(hargarumah)
+```
+```{r}
+linear_model <- lm(HARGA~LB, data = hargarumah)
+linear_model
+```
+
+```{r}
+summary(linear_model)
+```
+
+```{r}
+names(linear_model)
+```
+
+```{r}
+attach(hargarumah)
+plot(LB, HARGA)
+abline(linear_model)
+``` 
